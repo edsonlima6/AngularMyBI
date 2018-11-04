@@ -4,17 +4,17 @@ import { AlertModule } from 'ngx-bootstrap';
 //import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainMenuComponent } from './main-menu/main-menu.component';
+import { MainMenuModule } from './main-menu/main-menu.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MainMenuComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    MainMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
