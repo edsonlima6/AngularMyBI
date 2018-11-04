@@ -9,7 +9,7 @@ export class MainMenuComponent implements OnInit {
 
   read: string = "";
   constructor() { }
-
+    
   ngOnInit() {
 
   }
