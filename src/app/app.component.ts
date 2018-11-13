@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { Usuario } from './class/usuario';
+import { AuthServiceLoginService } from './login/auth-service-login.service';
+import { Component, OnInit } from '@angular/core';
+import { EventEmitter } from 'events';
+
 
 @Component({
   selector: 'app-root',
@@ -7,21 +9,19 @@ import { Usuario } from './class/usuario';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'MyBI';
-  Usuarios: Usuario[] = [
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' },
-    { id: 17, name: 'Dynama' },
-    { id: 18, name: 'Dr IQ' },
-    { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' }
-  ];
+  mostraMenu = false;
+  constructor(private loginService: AuthServiceLoginService) { }
+
+  ngOnInit() {
+    this.loginService.updateValue.subscribe(
+       mostra => this.mostraMenu = mostra
+     );
+
+  }
 
 
-  
+
+
 }
