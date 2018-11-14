@@ -10,7 +10,7 @@ import { EventEmitter } from 'events';
 })
 
 export class AppComponent implements OnInit {
-  title = 'MyBI';
+  title = 'Gotta';
   mostraMenu = false;
   constructor(private loginService: AuthServiceLoginService) { }
 

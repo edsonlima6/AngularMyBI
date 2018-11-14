@@ -10,6 +10,11 @@ import { LoginComponent } from './login/login.component';
 import { AuthServiceLoginService } from './login/auth-service-login.service';
 import { FormsModule } from '@angular/forms';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AlertModule.forRoot(),
     MainMenuModule,
-    Routing, FormsModule
+    Routing, 
+    FormsModule
   ],
   providers: [AuthServiceLoginService],
   bootstrap: [AppComponent]
