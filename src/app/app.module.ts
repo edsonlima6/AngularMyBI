@@ -2,18 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 
-import { Routing } from './app.routing';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainMenuModule } from './main-menu/main-menu.module';
 import { LoginComponent } from './login/login.component';
 import { AuthServiceLoginService } from './login/auth-service-login.service';
 import { FormsModule } from '@angular/forms';
+import { UsuarioModuleModule } from './usuario/usuario-module/usuario-module.module';
+import { UsuarioDetalheComponent } from './usuario/usuario-detalhe/usuario-detalhe.component';
 
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
@@ -25,8 +22,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     AppRoutingModule,
     AlertModule.forRoot(),
     MainMenuModule,
-    Routing, 
-    FormsModule
+    FormsModule,
+    UsuarioModuleModule
   ],
   providers: [AuthServiceLoginService],
   bootstrap: [AppComponent]
