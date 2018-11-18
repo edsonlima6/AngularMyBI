@@ -14,7 +14,6 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
   ],
   imports: [
     CommonModule,
-
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(), 

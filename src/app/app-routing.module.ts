@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 // const routes: Routes = [];
 const routes: Routes = [
   //    { path: '', component: AppComponent},
+     {path: 'usuario', loadChildren: './usuario/usuario-module/usuario-module.module#UsuarioModuleModule'},
      { path: 'login', component: LoginComponent}
   ];
 

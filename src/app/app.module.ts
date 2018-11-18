@@ -8,9 +8,7 @@ import { MainMenuModule } from './main-menu/main-menu.module';
 import { LoginComponent } from './login/login.component';
 import { AuthServiceLoginService } from './login/auth-service-login.service';
 import { FormsModule } from '@angular/forms';
-import { UsuarioModuleModule } from './usuario/usuario-module/usuario-module.module';
-import { UsuarioDetalheComponent } from './usuario/usuario-detalhe/usuario-detalhe.component';
-
+// import { UsuarioModuleModule} from './usuario/usuario-module/usuario-module.module'
 
 @NgModule({
   declarations: [
@@ -22,8 +20,9 @@ import { UsuarioDetalheComponent } from './usuario/usuario-detalhe/usuario-detal
     AppRoutingModule,
     AlertModule.forRoot(),
     MainMenuModule,
-    FormsModule,
-    UsuarioModuleModule
+    // Routing, 
+    // UsuarioModuleModule,
+    FormsModule
   ],
   providers: [AuthServiceLoginService],
   bootstrap: [AppComponent]
