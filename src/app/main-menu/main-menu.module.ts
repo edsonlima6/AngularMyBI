@@ -10,11 +10,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { Routes , RouterModule} from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 
-const routes: Routes = [
-  //    { path: '', component: AppComponent},
-    //  {path: 'usuario', loadChildren: './usuario/usuario-module/usuario-module.module#UsuarioModuleModule'},
-    //  { path: 'login', component: LoginComponent}
-  ];
+// IF NECESSARY TO CREATE MODULE FOR ROUTES, FOLLOW ARRAY BELOW
+const routes: Routes = [];
 
 @NgModule({
   declarations: [
