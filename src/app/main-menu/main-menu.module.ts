@@ -8,7 +8,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
-const routes: Routes = [ ];
+// IF NECESSARY TO CREATE MODULE FOR ROUTES, FOLLOW ARRAY BELOW
+const routes: Routes = [];
 
 @NgModule({
   declarations: [
