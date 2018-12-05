@@ -15,7 +15,7 @@ export class AuthServiceLoginService {
 
   ValidaLogin(usu: Usuario) {
 
-   if (usu.name === '123') {
+   if (usu.email === 'edsonlima6@gmail.com') {
       this.isAuticate = true;
       this.updateValue.emit(this.isAuticate);
    } else {

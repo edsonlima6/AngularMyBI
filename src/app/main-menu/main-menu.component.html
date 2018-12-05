@@ -4,8 +4,7 @@
 
 <nav   class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Gotta </a>
-  <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
-       aria-controls="collapseBasic" [attr.aria-expanded]="!isCollapsed">
+  <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed" aria-controls="collapseBasic" [attr.aria-expanded]="!isCollapsed">
         <!--   -->
         <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,10 +13,8 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" >Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" >Features</a>
-      <!-- <a routerLink="/usuario" class="nav-item nav-link" >Usuario</a> -->
-
-      <a routerLink="/usuario" class="nav-item nav-link" >Novo</a>
-      <a class="nav-item nav-link disabled" href="#">Sobre Nós</a>
+      <a routerLink="/login" class="nav-item nav-link" >Sign</a>
+      <a routerLink="/usuario" class="nav-item nav-link disabled">Register</a>
     </div>
 
   </div>

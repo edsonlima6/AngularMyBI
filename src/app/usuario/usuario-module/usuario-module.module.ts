@@ -1,4 +1,4 @@
-//import { Routes, RouterModule } from '@angular/router';
+// import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -21,11 +21,10 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     CommonModule,
-    //RouterModule.forChild(routes)
+    // RouterModule.forChild(routes)
     UsuarioRoutingModule
   ],
   exports: [
-    
   ]
 })
 export class UsuarioModuleModule { }
