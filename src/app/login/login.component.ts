@@ -12,11 +12,14 @@ export class LoginComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
   submited: boolean;
+  dismissOnTimeout: number = 3500;
+  dismissible: boolean;
 
   constructor(private authService: AuthServiceLoginService) {}
   ngOnInit() {
-
+    this.dismissible = true;
   }
+
 
   oClick(form) {
 

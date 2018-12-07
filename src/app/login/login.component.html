@@ -26,13 +26,12 @@
                       ngModel required >
 
 
-                 <div *ngIf="nomeModel.invalid && (nomeModel.dirty || nomeModel.touched)"
-                      class="alert alert-danger">
-
-                      Email is required
+                 <div *ngIf="nomeModel.invalid && (nomeModel.dirty || nomeModel.touched)">
+                    <alert type="danger" [dismissible]="dismissible" [dismissOnTimeout]="dismissOnTimeout">
+                        <strong> E-mail is required</strong>
+                    </alert>
                  </div>
-              <!-- <small id="emailHelp" class="form-text text-muted">  </small> -->
-              <!-- <br>TODO: remove this: {{spy.className}} -->
+
           </div>
         </div>
         <div class="form-group">
@@ -46,11 +45,12 @@
                      #senhaModel="ngModel">
 
               <!-- HIDE REQUIRED [hidden]="senhaModel.errors.required" !senhaModel.valid || !senhaModel.pristine-->
-              <div *ngIf="senhaModel.invalid && (senhaModel.dirty || senhaModel.touched)"
-                   class="alert alert-danger">
-
-                   Senha is required
+              <div *ngIf="senhaModel.invalid && (senhaModel.dirty || senhaModel.touched)">
+                  <alert type="danger" [dismissible]="dismissible" [dismissOnTimeout]="dismissOnTimeout">
+                      <strong> Password is required</strong>
+                  </alert>
               </div>
+
 
 
           </div>
