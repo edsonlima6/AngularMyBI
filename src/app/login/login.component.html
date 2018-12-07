@@ -11,36 +11,42 @@
 
     <div class="container">
 
-      <form #form="ngForm" (ngSubmit)="oClick()">
+      <form #form="ngForm" (ngSubmit)="oClick(form)">
 
         <div class="form-group">
           <div class="col-sm-10 col-md-12">
-
-              <label for="model.email">Email address</label>
-              <input  [(ngModel)]="usuario.email" type="email" [ngModelOptions]="{standalone: true}"
+              <!-- [ngModelOptions]="{standalone: true}" -->
+              <label for="email">Email address</label>
+              <input  [(ngModel)]="usuario.email"
+                      type="email"
+                      name="email"
                       class="form-control"
                       aria-describedby="emailHelp"
-                      placeholder="Enter email"
-                      required
-                      #spy>
+                      #nomeModel="ngModel"
+                      ngModel required >
 
-              <small id="emailHelp" class="form-text text-muted">  </small>
-              <br>TODO: remove this: {{spy.className}}
-        </div>
+
+                 <div *ngIf="nomeModel.invalid && (nomeModel.dirty || nomeModel.touched)"
+                      class="alert alert-danger">
+
+                      Email is required
+                 </div>
+              <!-- <small id="emailHelp" class="form-text text-muted">  </small> -->
+              <!-- <br>TODO: remove this: {{spy.className}} -->
+          </div>
         </div>
         <div class="form-group">
           <div class="col-sm-10 col-md-12">
-              <label for="model.senha">Password</label>
-              <input [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}"
-                     name="senha"
+              <label for="senha">Password</label>
+              <input [(ngModel)]="usuario.senha"
                      type="password"
+                     name="senha"
                      class="form-control"
-                     placeholder="Password"
-                     required
+                     ngModel required
                      #senhaModel="ngModel">
-            <h1>{{ senhaModel.touched }}</h1>
+
               <!-- HIDE REQUIRED [hidden]="senhaModel.errors.required" !senhaModel.valid || !senhaModel.pristine-->
-              <div *ngIf="!senhaModel.valid || !senhaModel.pristine && senhaModel.untouched"
+              <div *ngIf="senhaModel.invalid && (senhaModel.dirty || senhaModel.touched)"
                    class="alert alert-danger">
 
                    Senha is required
@@ -49,16 +55,18 @@
 
           </div>
         </div>
-        <div class="col-sm-10">
+        <!-- <div class="col-sm-10">
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <label class="form-check-label" for="exampleCheck1">Remember Password</label>
           </div>
-          <button type="submit" class="btn btn-primary" [disabled]="!form.form.valid" >Sign</button>
-          <button type="submit" class="btn btn-primary" [disabled]="submited" >Subscribe</button>
-        </div>
 
-        <h1>{{ usuario.senha }}</h1>
+        </div> -->
+
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" >Sign emergency</button>
+
+
+
       </form>
 
     </div>
