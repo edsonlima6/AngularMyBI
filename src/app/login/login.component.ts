@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   dismissible: boolean;
 
   constructor(private authService: AuthServiceLoginService) {}
-  ngOnInit() {
+  ngOnInit() { 
     this.dismissible = true;
   }
 
