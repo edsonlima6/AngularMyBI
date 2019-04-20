@@ -18,9 +18,11 @@ export class AuthServiceLoginService {
    if (usu.email === 'edsonlima6@gmail.com') {
       this.isAuticate = true;
       this.updateValue.emit(this.isAuticate);
+      console.log('logado');
    } else {
      this.isAuticate = false;
      this.updateValue.emit(this.isAuticate);
+     console.log('nao logado');
    }
 
   }

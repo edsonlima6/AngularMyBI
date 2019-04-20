@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-usuario',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioComponent implements OnInit {
 
-  constructor() { }
+  formRe: FormGroup = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+    repeatedpassword: ['', Validators.required]
+
+  });
+
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    this.formRe.patchValue({
+      email: 'Foi porra'
+    });
   }
 
 }

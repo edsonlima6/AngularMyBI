@@ -5,14 +5,7 @@ import { CommonModule } from '@angular/common';
  import { UsuarioComponent } from '../usuario.component';
  import { UsuarioDetalheComponent } from '../usuario-detalhe/usuario-detalhe.component';
  import { UsuarioRoutingModule } from '../usuario-module/usuario-routing.module';
-
-// const routes: Routes = [
-
-//      { path: 'usuario', component: UsuarioComponent, children: [
-//       {path: ':id', component: UsuarioDetalheComponent}
-
-//      ]}
-//   ];
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,9 +15,12 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     // RouterModule.forChild(routes)
-    UsuarioRoutingModule
+    UsuarioRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
+    UsuarioComponent,
+    UsuarioDetalheComponent
   ]
 })
 export class UsuarioModuleModule { }

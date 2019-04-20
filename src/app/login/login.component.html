@@ -13,11 +13,13 @@
 
       <form class="" #form="ngForm" (ngSubmit)="oClick(form)">
 
+        <!-- row about login line -->
+
         <div class="row  justify-content-center">
             <div class="col-4">
                   <div class="form-group">
 
-               
+
                     <!-- [ngModelOptions]="{standalone: true}" -->
                     <label for="email">Email address</label>
                     <input  [(ngModel)]="usuario.email"
@@ -39,9 +41,11 @@
 
             </div>
         </div>
+
+        <!-- row about password line -->
         <div class="row  justify-content-center">
 
-           
+
               <div class="col-4 ">
                   <div class="form-group">
                   <label for="senha">Password</label>
@@ -64,15 +68,17 @@
               </div>
             </div>
 
-        </div> 
+        </div>
 
-        <!-- <div class="col-sm-10">
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember Password</label>
-          </div>
+        <!-- row about error messages -->
 
-        </div> -->
+        <div class="row  justify-content-center">
+        <div [hidden]="isLogged && form.valid">
+          <alert type="danger">
+              <strong> {{ sMsgRet }} </strong>
+          </alert>
+        </div>
+        </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="!form.valid" >Sign In</button>
 

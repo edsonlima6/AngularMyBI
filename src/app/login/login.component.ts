@@ -2,6 +2,7 @@ import { Usuario } from './../class/usuario';
 import { Component, OnInit } from '@angular/core';
 
 import { AuthServiceLoginService } from './auth-service-login.service';
+import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +13,32 @@ export class LoginComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
   submited: boolean;
-  dismissOnTimeout: number = 3500;
+  dismissOnTimeout: number;
   dismissible: boolean;
+  isLogged: boolean;
+  sMsgRet: string;
 
-  constructor(private authService: AuthServiceLoginService) {}
-  ngOnInit() { 
+  constructor(private authService: AuthServiceLoginService) {
+
+  }
+
+  ngOnInit() {
+    this.isLogged = false;
     this.dismissible = true;
+    this.dismissOnTimeout = 3500;
+    this.authService.updateValue.subscribe(islogado => this.isLogged = islogado);
   }
 
 
-  oClick(form) {
+  oClick(form: Form) {
 
-    console.log(this.usuario.email);
-    // this.authService.ValidaLogin(this.usuario);
+    // console.log(this.usuario.email);
+    this.authService.ValidaLogin(this.usuario);
+
+    if (!this.isLogged) {
+
+      this.sMsgRet = 'User / Password Invalido Rola';
+    }
+
   }
 }
