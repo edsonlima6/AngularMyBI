@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class UsuarioComponent implements OnInit {
 
   formRe: FormGroup = this.fb.group({
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
     repeatedpassword: ['', Validators.required]
 
@@ -22,9 +22,11 @@ export class UsuarioComponent implements OnInit {
   }
 
   onSubmit() {
-    this.formRe.patchValue({
-      email: 'Foi porra'
-    });
+    // this.formRe.patchValue({
+    //   email: 'Foi porra'
+    // });
+
+    console.log(this.formRe.value);
   }
 
 }
