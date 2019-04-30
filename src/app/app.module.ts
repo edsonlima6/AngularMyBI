@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     MainMenuModule,
     // Routing, 
     // UsuarioModuleModule,
-    FormsModule
+    FormsModule, 
+    HttpClientModule
   ],
   providers: [AuthServiceLoginService],
   bootstrap: [AppComponent]

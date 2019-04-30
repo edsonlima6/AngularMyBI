@@ -22,8 +22,9 @@
 
                     <!-- [ngModelOptions]="{standalone: true}" -->
                     <label for="email">Email address</label>
-                    <input  [(ngModel)]="usuario.email"
+                    <input  [(ngModel)]="usuario.Email"
                             type="email"
+                            [email] = "true"
                             name="email"
                             class="form-control"
                             aria-describedby="emailHelp"
@@ -49,7 +50,7 @@
               <div class="col-4 ">
                   <div class="form-group">
                   <label for="senha">Password</label>
-                  <input [(ngModel)]="usuario.senha"
+                  <input [(ngModel)]="usuario.Password"
                         type="password"
                         name="senha"
                         class="form-control"
@@ -73,9 +74,9 @@
         <!-- row about error messages -->
 
         <div class="row  justify-content-center">
-        <div [hidden]="isLogged && form.valid">
+        <div [hidden]="isLogIn">
           <alert type="danger">
-              <strong> {{ sMsgRet }} </strong>
+              <strong> Login/Password Invalid </strong>
           </alert>
         </div>
         </div>

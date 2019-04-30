@@ -1,44 +1,41 @@
 import { Usuario } from './../class/usuario';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck, SimpleChanges } from '@angular/core';
 
 import { AuthServiceLoginService } from './auth-service-login.service';
-import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, DoCheck{
 
+ 
+ 
   usuario: Usuario = new Usuario();
   submited: boolean;
-  dismissOnTimeout: number;
+  dismissOnTimeout: number = 3500;
   dismissible: boolean;
-  isLogged: boolean;
-  sMsgRet: string;
+  isLogIn:boolean = true;
 
   constructor(private authService: AuthServiceLoginService) {
-
+    
+  }
+  ngDoCheck(): void {
+    //console.log('ngDoCheck');
   }
 
-  ngOnInit() {
-    this.isLogged = false;
+
+  ngOnInit() { 
     this.dismissible = true;
-    this.dismissOnTimeout = 3500;
-    this.authService.updateValue.subscribe(islogado => this.isLogged = islogado);
+    this.authService.updateValue.subscribe(r => this.isLogIn = r);
   }
 
 
-  oClick(form: Form) {
+  oClick(form) {
 
-    // console.log(this.usuario.email);
+    //if ((this.usuario.email.length >= 0 || this.usuario.email.length >= 0) && this.usuario.email == "eds") 
     this.authService.ValidaLogin(this.usuario);
-
-    if (!this.isLogged) {
-
-      this.sMsgRet = 'User / Password Invalido Rola';
-    }
-
+    console.log(this.isLogIn);
   }
 }
