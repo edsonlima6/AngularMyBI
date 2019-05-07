@@ -1,6 +1,10 @@
 import { Usuario } from './../class/usuario';
 import { Injectable,  EventEmitter } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { ResponseUser } from '../class/ResponseUser';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,10 +24,11 @@ const httpOptions = {
 export class AuthServiceLoginService {
 
   
-  pathServer: string = 'https://localhost:44302/api/';
+  pathServer: string = environment.API; //'https://localhost:44302/api/';
   updateValue = new EventEmitter<boolean>();
   isAuticate = false;
   userAuthenticated: Usuario;
+  response: ResponseUser;
 
   constructor(private http: HttpClient) { }
 
@@ -52,13 +57,41 @@ export class AuthServiceLoginService {
 
   AuthenticateOnServe(Usuario){
 
-    console.log(Usuario);
-    this.http.put(this.pathServer + "login/SignUp", Usuario, httpOptions)
+    //console.log(this.pathServer + 'login/SignUp');
+    this.http.put<ResponseUser>(this.pathServer + 'login/SignUp', Usuario, httpOptions)
+             .pipe(
+                catchError(this.handleError)
+              )
              .subscribe(ret => {
+
+              // this.userAuthenticated = ret.User;
+              // this.response.message = ret.message;
+              this.response = ret;
               console.log(ret);
-             });
+             })
+             
 
   }
+
+  private handleError(error: HttpErrorResponse) {
+    //if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+    //   console.error('An error occurred:', error.error.message);
+    // } else {
+    //   // The backend returned an unsuccessful response code.
+    //   // The response body may contain clues as to what went wrong,
+    //   console.error(
+    //     `Backend returned code ${error.status}, ` +
+    //     `body was: ${error.error}`);
+    // }
+    //console.log(error.error.message);
+    //this.response.message = error.error.message;
+    //console.log(error.error.message);
+    // // return an observable with a user-facing error message
+     return throwError(error);
+
+    
+  };
 
 }
 
