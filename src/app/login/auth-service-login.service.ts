@@ -2,8 +2,8 @@ import { Usuario } from './../class/usuario';
 import { Injectable,  EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { ResponseUser } from '../class/ResponseUser';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable, throwError, of, empty } from 'rxjs';
+import { catchError, retry, take, delay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -26,29 +26,30 @@ export class AuthServiceLoginService {
   
   pathServer: string = environment.API; //'https://localhost:44302/api/';
   updateValue = new EventEmitter<boolean>();
+  updateValueSubmited = new EventEmitter<boolean>();
   isAuticate = false;
   userAuthenticated: Usuario;
   response: ResponseUser;
+  isSubmited: boolean = true;
 
   constructor(private http: HttpClient) { }
 
   ValidaLogin(usu: Usuario) {
 
-   if (usu.Email === 'edsonlima6@gmail.com') {
-      this.isAuticate = true;
-      this.updateValue.emit(this.isAuticate);
-
+   if (usu.Email === 'edsonlima6@gmail.com') 
+   {
       console.log('Chamou o metodo');
       this.AuthenticateOnServe(usu);
-      
+      this.updateValue.emit(this.isAuticate);
    } 
-   else {
+   else 
+   {
      this.isAuticate = false;
      this.updateValue.emit(this.isAuticate);
+
+     this.isSubmited = false;
+      this.updateValueSubmited.emit(this.isSubmited);
      console.log('nao logado');
-
-
-
    }
 
   }
@@ -57,18 +58,21 @@ export class AuthServiceLoginService {
 
   AuthenticateOnServe(Usuario){
 
-    //console.log(this.pathServer + 'login/SignUp');
     this.http.put<ResponseUser>(this.pathServer + 'login/SignUp', Usuario, httpOptions)
              .pipe(
+                delay(3000),
+                take(1),
                 catchError(this.handleError)
               )
              .subscribe(ret => {
 
-              // this.userAuthenticated = ret.User;
-              // this.response.message = ret.message;
               this.response = ret;
-              console.log(ret);
-             })
+              this.isAuticate = ret.created;
+
+              this.isSubmited = false;
+              this.updateValueSubmited.emit(this.isSubmited);
+              console.log(this.response);
+             });
              
 
   }
@@ -88,7 +92,7 @@ export class AuthServiceLoginService {
     //this.response.message = error.error.message;
     //console.log(error.error.message);
     // // return an observable with a user-facing error message
-     return throwError(error);
+     return empty();
 
     
   };

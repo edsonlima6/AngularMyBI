@@ -17,25 +17,25 @@ export class LoginComponent implements OnInit, DoCheck{
   dismissOnTimeout: number = 3500;
   dismissible: boolean;
   isLogIn:boolean = true;
+  isProcessing:boolean = false;
 
   constructor(private authService: AuthServiceLoginService) {
     
   }
   ngDoCheck(): void {
-    //console.log('ngDoCheck');
   }
 
 
   ngOnInit() { 
     this.dismissible = true;
     this.authService.updateValue.subscribe(r => this.isLogIn = r);
+    this.authService.updateValueSubmited.subscribe(updateValueSubmited => this.isProcessing = updateValueSubmited);
   }
 
 
-  oClick(form) {
+  oClick() {
 
-    //if ((this.usuario.email.length >= 0 || this.usuario.email.length >= 0) && this.usuario.email == "eds") 
+    this.isProcessing = true;
     this.authService.ValidaLogin(this.usuario);
-    console.log(this.isLogIn);
   }
 }

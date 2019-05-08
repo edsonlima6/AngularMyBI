@@ -81,9 +81,7 @@
         </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" >Sign In</button>
-
-
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid || isProcessing" > Sign In </button>
 
       </form>
 
