@@ -9,6 +9,7 @@ import { MainMenuModule } from './main-menu/main-menu.module';
 import { LoginComponent } from './login/login.component';
 import { AuthServiceLoginService } from './login/auth-service-login.service';
 import { FormsModule } from '@angular/forms';
+import { httpInterceptorProviders } from './class/Interceptors/Index_Interceptor';
 // import { UsuarioModuleModule} from './usuario/usuario-module/usuario-module.module'
 
 @NgModule({
@@ -26,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule, 
     HttpClientModule
   ],
-  providers: [AuthServiceLoginService],
+  providers: [AuthServiceLoginService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

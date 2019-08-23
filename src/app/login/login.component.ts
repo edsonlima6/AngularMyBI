@@ -2,6 +2,7 @@ import { Usuario } from './../class/usuario';
 import { Component, OnInit, OnChanges, DoCheck, SimpleChanges } from '@angular/core';
 
 import { AuthServiceLoginService } from './auth-service-login.service';
+import { ResponseUser } from '../class/ResponseUser';
 
 @Component({
   selector: 'app-login',
@@ -11,31 +12,33 @@ import { AuthServiceLoginService } from './auth-service-login.service';
 export class LoginComponent implements OnInit, DoCheck{
 
  
- 
+  erro: ResponseUser;
   usuario: Usuario = new Usuario();
+  responseLogin: any;
   submited: boolean;
   dismissOnTimeout: number = 3500;
   dismissible: boolean;
-  isLogIn:boolean = true;
+  //isLogIn:boolean = true;
   isProcessing:boolean = false;
 
-  constructor(private authService: AuthServiceLoginService) {
-    
-  }
+  constructor(private authService: AuthServiceLoginService) {}
   ngDoCheck(): void {
   }
 
 
   ngOnInit() { 
     this.dismissible = true;
-    this.authService.updateValue.subscribe(r => this.isLogIn = r);
-    this.authService.updateValueSubmited.subscribe(updateValueSubmited => this.isProcessing = updateValueSubmited);
+    //this.authService.updateValue.subscribe(r => this.isLogIn = r);
   }
 
 
   oClick() {
 
     this.isProcessing = true;
-    this.authService.ValidaLogin(this.usuario);
+    this.authService.AuthenticateOnServe(this.usuario).subscribe(
+      data => this.responseLogin = data, 
+      (err) => { this.erro = err; this.isProcessing = false}
+    );
+    this.authService.responseUserError.subscribe(t => this.erro = t);
   }
 }

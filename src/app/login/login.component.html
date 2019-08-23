@@ -73,18 +73,20 @@
 
         <!-- row about error messages -->
 
-        <div class="row  justify-content-center">
+        <!-- <div class="row  justify-content-center">
         <div [hidden]="isLogIn">
           <alert type="danger">
               <strong> Login/Password Invalid </strong>
           </alert>
         </div>
-        </div>
+        </div> -->
 
         <button type="submit" class="btn btn-primary" [disabled]="!form.valid || isProcessing" > Sign In </button>
 
       </form>
-
+      <div *ngIf="erro"> 
+        FUDEO CACHORRO
+      </div>
     </div>
 </div>
 
