@@ -3,42 +3,34 @@ import { Component, OnInit, OnChanges, DoCheck, SimpleChanges } from '@angular/c
 
 import { AuthServiceLoginService } from './auth-service-login.service';
 import { ResponseUser } from '../class/ResponseUser';
+import { AlertifyService } from '../class/Services/alertify.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, DoCheck{
-
- 
+export class LoginComponent implements OnInit{
   erro: ResponseUser;
   usuario: Usuario = new Usuario();
   responseLogin: any;
   submited: boolean;
-  dismissOnTimeout: number = 3500;
+  dismissOnTimeout: any = 3500;
   dismissible: boolean;
-  //isLogIn:boolean = true;
-  isProcessing:boolean = false;
+  isProcessing:any = false;
 
-  constructor(private authService: AuthServiceLoginService) {}
-  ngDoCheck(): void {
-  }
+  constructor(private authService: AuthServiceLoginService, private alertify: AlertifyService) {}
 
-
-  ngOnInit() { 
+  ngOnInit() {
     this.dismissible = true;
-    //this.authService.updateValue.subscribe(r => this.isLogIn = r);
   }
 
 
   oClick() {
-
     this.isProcessing = true;
     this.authService.AuthenticateOnServe(this.usuario).subscribe(
-      data => this.responseLogin = data, 
-      (err) => { this.erro = err; this.isProcessing = false}
+      data => this.responseLogin = data,
+      (err) => { this.erro = err; this.alertify.error('teste');  }
     );
-    this.authService.responseUserError.subscribe(t => this.erro = t);
   }
 }

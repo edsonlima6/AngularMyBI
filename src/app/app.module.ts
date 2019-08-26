@@ -1,3 +1,4 @@
+import { AlertifyService } from './class/Services/alertify.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
@@ -22,12 +23,12 @@ import { httpInterceptorProviders } from './class/Interceptors/Index_Interceptor
     AppRoutingModule,
     AlertModule.forRoot(),
     MainMenuModule,
-    // Routing, 
+    // Routing,
     // UsuarioModuleModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule
   ],
-  providers: [AuthServiceLoginService, httpInterceptorProviders],
+  providers: [AuthServiceLoginService, httpInterceptorProviders, AlertifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
