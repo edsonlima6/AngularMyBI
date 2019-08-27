@@ -1,4 +1,4 @@
 export class ResponseError{
-    Code:string;
-    Description:string;
+    code:string;
+    description:string;
 }

@@ -5,7 +5,7 @@ import { ResponseError } from "./ResponseError";
 export class ResponseUser{
 
 created:boolean;
-message: Observable<ResponseError>;
+messages: Observable<ResponseError>;
 User: Usuario;
 
 
