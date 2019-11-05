@@ -74,10 +74,15 @@
         <button type="submit" class="btn btn-primary" [disabled]="!form.valid || isProcessing" > Sign In </button>
       </form>
       <div *ngIf="erro"> 
-          <alert  *ngFor="let errorMe of erro.messages" type="danger" [dismissible]="dismissible" >
+          <alert  *ngFor="let errorMe of erro?.messages" type="danger" [dismissible]="dismissible" >
             {{errorMe.description}}
           </alert>
           
+      </div>
+      <div>
+        {{ authService.decodeToken?.aud }}
+
+        Segue
       </div>
     </div>
 </div>

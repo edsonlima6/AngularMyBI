@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
   constructor(private loginService: AuthServiceLoginService) { }
 
   ngOnInit() {
-    this.loginService.updateValue.subscribe(
-       mostra => this.mostraMenu = mostra
-     );
+    // this.loginService.updateValue.subscribe(
+    //    mostra => this.mostraMenu = mostra
+    //  );
 
   }
 

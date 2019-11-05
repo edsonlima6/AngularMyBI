@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit{
   dismissible: boolean;
   isProcessing:any = false;
 
-  constructor(private authService: AuthServiceLoginService, private alertify: AlertifyService) {}
+  constructor(public authService: AuthServiceLoginService, private alertify: AlertifyService) {}
 
   ngOnInit() {
     this.dismissible = true;
@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit{
     this.isProcessing = true;
     this.erro = null;
     this.authService.AuthenticateOnServe(this.usuario).subscribe(
-      (data) => {this.responseLogin = data, this.isProcessing = false;},
+      (data) => { // this.responseLogin = data;
+                  this.isProcessing = false;},
       (err) => this.handleError(err)
     );
   }
@@ -49,7 +50,7 @@ handleError(err: HttpErrorResponse)
     this.alertify.error("Backend returned something bad");
   } else {
   this.erro = err.error; 
-  console.log(this.erro.messages); 
+    console.log(err); 
   }
 }
 
