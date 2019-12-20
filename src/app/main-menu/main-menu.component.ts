@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {AuthServiceLoginService} from './../login/auth-service-login.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -9,10 +10,15 @@ export class MainMenuComponent implements OnInit {
 
   @Input() mostramenu = false;
 
-  constructor() { }
+  constructor(private auth: AuthServiceLoginService ) { }
 
   ngOnInit() {
 
+  }
+
+  Loggout(){
+    console.log('Passou');
+    this.auth.Loggout();
   }
 
 

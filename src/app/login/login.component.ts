@@ -1,5 +1,6 @@
 import { Usuario } from './../class/usuario';
 import { Component, OnInit, OnChanges, DoCheck, SimpleChanges } from '@angular/core';
+import {Route, ActivatedRoute, Router} from '@angular/router';
 
 import { AuthServiceLoginService } from './auth-service-login.service';
 import { ResponseUser } from '../class/ResponseUser';
@@ -14,13 +15,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit{
   erro: ResponseUser;
   usuario: Usuario = new Usuario();
-  responseLogin: any;
-  //submited: boolean;
   dismissOnTimeout: any = 3500;
   dismissible: boolean;
   isProcessing:any = false;
 
-  constructor(public authService: AuthServiceLoginService, private alertify: AlertifyService) {}
+  constructor(public authService: AuthServiceLoginService, private alertify: AlertifyService, private route: Router) {}
 
   ngOnInit() {
     this.dismissible = true;
@@ -31,10 +30,14 @@ export class LoginComponent implements OnInit{
     this.isProcessing = true;
     this.erro = null;
     this.authService.AuthenticateOnServe(this.usuario).subscribe(
-      (data) => { // this.responseLogin = data;
-                  this.isProcessing = false;},
+      (data) => { 
+                  this.isProcessing = false;
+                  this.alertify.success(`Welcome ${this.authService.decodeToken.email}`);
+                  this.route.navigate(['/main-page/main-page']); 
+                },
       (err) => this.handleError(err)
     );
+    
   }
 
 handleError(err: HttpErrorResponse)
@@ -49,7 +52,7 @@ handleError(err: HttpErrorResponse)
     console.error(`Backend returned code ${err.status}, body was: ${err.error}`);
     this.alertify.error("Backend returned something bad");
   } else {
-  this.erro = err.error; 
+    this.erro = err.error; 
     console.log(err); 
   }
 }

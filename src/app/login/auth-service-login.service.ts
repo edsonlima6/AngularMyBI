@@ -43,20 +43,27 @@ export class AuthServiceLoginService {
   
   AuthenticateOnServe(Usuario) : Observable<ResponseUser> {
 
-  return  this.http.put<ResponseUser>(this.pathServer + 'login/SignUp', Usuario, httpOptions)
+  return  this.http.post<ResponseUser>(this.pathServer + 'login/Authentication', Usuario, httpOptions)
              .pipe(
                 delay(3000),
                 take(1), 
                 map((response: any) => {
-                    localStorage.setItem("token", response.accessToken);     
-                    console.log(response.accessToken);   
+                         
+                    //console.log(response);   
                     this.decodeToken = this.helper.decodeToken(response.accessToken);
-                    console.log(this.decodeToken); 
-
+                    localStorage.setItem("token", response.accessToken);
+                    //console.log(response); 
                     return response;
                 })
               );
 }
+
+Loggout(){
+  if(localStorage.getItem("token"))
+     localStorage.removeItem("token");
+}
+
+
 
   // private handleError(error: HttpErrorResponse) {
   //   if (error.error instanceof ErrorEvent) {

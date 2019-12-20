@@ -11,12 +11,14 @@ import { LoginComponent } from './login/login.component';
 import { AuthServiceLoginService } from './login/auth-service-login.service';
 import { FormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './class/Interceptors/Index_Interceptor';
+import { MainPageComponent } from './main-page/main-page.component';
 // import { UsuarioModuleModule} from './usuario/usuario-module/usuario-module.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
