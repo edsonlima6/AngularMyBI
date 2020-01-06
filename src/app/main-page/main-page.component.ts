@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceLoginService } from '../login/auth-service-login.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthServiceLoginService) { }
 
   ngOnInit() {
   }
 
-  MouseOver(){
-    console.log('Teste');
+  MouseClick(){
+    console.log('Passou MouseClick');
+    console.log(this.authService.LoggedIn());
   }
 }

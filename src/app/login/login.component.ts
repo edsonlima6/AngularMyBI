@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit{
       (data) => { 
                   this.isProcessing = false;
                   this.alertify.success(`Welcome ${this.authService.decodeToken.email}`);
-                  this.route.navigate(['/main-page/main-page']); 
+                  this.route.navigate(['/main-page']);
                 },
       (err) => this.handleError(err)
     );

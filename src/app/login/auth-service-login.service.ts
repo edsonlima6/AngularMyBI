@@ -48,19 +48,26 @@ export class AuthServiceLoginService {
                 delay(3000),
                 take(1), 
                 map((response: any) => {
-                         
-                    //console.log(response);   
                     this.decodeToken = this.helper.decodeToken(response.accessToken);
                     localStorage.setItem("token", response.accessToken);
-                    //console.log(response); 
                     return response;
                 })
               );
 }
 
 Loggout(){
-  if(localStorage.getItem("token"))
-     localStorage.removeItem("token");
+  if(localStorage.getItem('token')) {
+    this.decodeToken = null;
+    localStorage.removeItem('token');
+    
+  }
+  
+    
+}
+
+LoggedIn()
+{
+  return (localStorage.getItem('token') != null);
 }
 
 
