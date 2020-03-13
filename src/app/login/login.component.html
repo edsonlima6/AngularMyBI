@@ -71,17 +71,27 @@
 
         </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="!form.valid || isProcessing" > Sign In </button>
+        <div>
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid || isProcessing" > Sign In </button>
+          <button type="button" class="btn btn-primary ml-2" [routerLink]="['/usuario']" routerLinkActive="router-link-active"  > Sign Up </button>
+        </div>
+        
       </form>
-      <div *ngIf="erro"> 
-          <alert  *ngFor="let errorMe of erro?.messages" type="danger" [dismissible]="dismissible" >
-            {{errorMe.description}}
-          </alert>
-          
+
+      <div class="row justify-content-md-center mt-3">
+        <div class="col-md-2">
+          <div *ngIf="erro">
+            <alert *ngFor="let errorMe of erro?.messages" type="danger" [dismissible]="dismissible">
+              {{errorMe.description}}
+            </alert>
+      
+          </div>
+          <div>
+            {{ authService.decodeToken?.email }}
+          </div>
+        </div>
       </div>
-      <div>
-        {{ authService.decodeToken?.email }}
-      </div>
+      
     </div>
 </div>
 
