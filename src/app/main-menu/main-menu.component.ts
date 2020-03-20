@@ -7,7 +7,7 @@ import {AuthServiceLoginService} from './../login/auth-service-login.service';
   styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
-
+  isCollapsed:boolean = false;
   @Input() mostramenu = false;
 
   constructor(private auth: AuthServiceLoginService ) { }

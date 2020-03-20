@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit{
   }
 
 
-  oClick() {
+  oClick(form:any) {
     this.isProcessing = true;
     this.erro = null;
     this.authService.AuthenticateOnServe(this.usuario).subscribe(
