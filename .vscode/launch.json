@@ -1,6 +1,21 @@
 {
     "configurations": [
         {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:5035",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach to Chrome",
+            "port": 5035,
+            "webRoot": "${workspaceFolder}"
+        },
+
+        {
             "name": "Docker Node.js Launch",
             "type": "docker",
             "request": "launch",

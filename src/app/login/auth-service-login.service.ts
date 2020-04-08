@@ -25,41 +25,36 @@ const httpOptions = {
 export class AuthServiceLoginService {
   
   helper = new JwtHelperService();
-  pathServer: string = environment.API; //'https://localhost:44302/api/';
+  pathServer: string = environment.API; 
   decodeToken: any;
-  // updateValue = new EventEmitter<boolean>();
-  // updateValueSubmited = new EventEmitter<boolean>();
-  // isAuticate = false;
-  // userAuthenticated: Usuario;
-  // response: ResponseUser;
-  // isSubmited: boolean = true;
-  // responseUserError = new EventEmitter<ResponseUser>();
 
   constructor(private http: HttpClient) { }
 
   ValidaLogin(usu: Usuario) {
 
   }
+  SignUp(user: Usuario){
+
+
+  }
   
   AuthenticateOnServe(Usuario) : Observable<ResponseUser> {
-
   return  this.http.post<ResponseUser>(this.pathServer + 'login/Authentication', Usuario, httpOptions)
-             .pipe(
-                delay(3000),
-                take(1), 
-                map((response: any) => {
-                    this.decodeToken = this.helper.decodeToken(response.accessToken);
-                    localStorage.setItem("token", response.accessToken);
-                    return response;
-                })
-              );
+                   .pipe(
+                       delay(3000),
+                       take(1), 
+                       map((response: any) => {
+                           this.decodeToken = this.helper.decodeToken(response.accessToken);
+                           localStorage.setItem("token", response.accessToken);
+                           return response;
+                       })
+                     );
 }
 
 Loggout(){
   if(localStorage.getItem('token')) {
     this.decodeToken = null;
-    localStorage.removeItem('token');
-    
+    localStorage.removeItem('token');    
   }
   
     
@@ -69,27 +64,6 @@ LoggedIn()
 {
   return (localStorage.getItem('token') != null);
 }
-
-
-
-  // private handleError(error: HttpErrorResponse) {
-  //   if (error.error instanceof ErrorEvent) {
-  //     // A client-side or network error occurred. Handle it accordingly.
-  //     // console.error('An error occurred:', error.error.message);
-  //   } else {
-  //     // The backend returned an unsuccessful response code.
-  //     // The response body may contain clues as to what went wrong,
-  //     // console.error(
-  //     //   `Backend returned code ${error.status}, ` +
-  //     //   `body was: ${error.error}`);
-  //     this.response = error.error;
-  //     console.log(this.response);
-  //   }
-    
-  //    return empty();
-  //    //return throwError('Something bad happened; please try again later.');
-    
-  // };
 
 }
 
