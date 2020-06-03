@@ -1,4 +1,4 @@
 .pointer:hover{
-    background-color:darkgray;
+    background-color: blueviolet !important;
     cursor: pointer;
 }

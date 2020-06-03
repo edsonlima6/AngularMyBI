@@ -9,7 +9,8 @@ const routes: Routes = [
     // lazy load can't to be in any module and must follow tha default UsuarioModule
      {path: 'usuario', loadChildren: () => import('./usuario/usuario-module/usuario-module.module').then(m => m.UsuarioModuleModule)},
      { path: 'login', component: LoginComponent}, 
-     { path: 'main-page', component: MainPageComponent}
+     { path: 'main-page', component: MainPageComponent},
+     {path: '', redirectTo: '/main-page', pathMatch: 'full'}
   ];
 
 @NgModule({

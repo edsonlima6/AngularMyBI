@@ -10,7 +10,7 @@ import { EventEmitter } from 'events';
 })
 
 export class AppComponent implements OnInit {
-  title = 'Gotta';
+  title = 'Locke Key';
   mostraMenu = false;
   constructor(private loginService: AuthServiceLoginService) { }
 

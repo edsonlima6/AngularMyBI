@@ -1,36 +1,57 @@
-
 <div class="container mt-5">
   <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h1 class="text-center"> Nós ajudamos você </h1>
+      <h5 class="font-weight-bold text-light"> 
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make 
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+        like Aldus PageMaker including versions of Lorem Ipsum.
+      </h5>
+      
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-success" [routerLink]="['/usuario']" routerLinkActive="router-link-active"  > Cadastre-se </button>
+      </div>
+
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+  <br>
+  <div class="row mt-4">
+
     <div class="card-group">
-      <div class="card border border-success ml-2 pointer" (click)="MouseClick()">
-        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+      <div class="card ml-2 bg-dark pointer" (click)="MouseClick()">
+        <!-- <img class="card-img-top" src="..." border-success  alt="Card image cap"> -->
         <div class="card-body">
-          <h5 class="card-title">Cadastro Empresa</h5>
-          <p class="card-text">Cadastro referente a empresas que fornecem serviços</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title text-light">Cadastro Empresa</h5>
+          <p class="card-text text-light">Cadastro referente a empresas que fornecem serviços</p>
+          <p class="card-text text-light"><small class="text-muted text-light">Last updated 3 mins ago</small></p>
         </div>
       </div>
-      <div class="card border border-success ml-2 pointer" (click)="MouseClick()">
+      <div class="card ml-2 bg-dark pointer" (click)="MouseClick()">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-body">
-          <h5 class="card-title">Lançamento de contas</h5>
-          <p class="card-text">Registrar contas mensalmente</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title text-light">Lançamento de contas</h5>
+          <p class="card-text text-light">Registrar contas mensalmente</p>
+          <p class="card-text text-light"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
       </div>
-      <div class="card border border-success ml-2 pointer" (click)="MouseClick()">
+      <div class="card ml-2 bg-dark pointer" (click)="MouseClick()">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-body">
-          <h5 class="card-title">Consultar Pagamento</h5>
-          <p class="card-text">Consulte os pagamentos que foram pagos</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title text-light">Consultar Pagamento</h5>
+          <p class="card-text text-light">Consulte os pagamentos que foram pagos</p>
+          <p class="card-text text-light"><small class="text-muted text-light">Last updated 3 mins ago</small></p>
         </div>
       </div>
     </div>
+
+
+
   </div>
-
-
-
 
 
 </div>
